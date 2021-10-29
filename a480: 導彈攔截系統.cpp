@@ -25,3 +25,5 @@ int main()
 	}
 	cout << mx1+mx2 << endl;
 }
+
+網址: https://zerojudge.tw/ShowProblem?problemid=a480
