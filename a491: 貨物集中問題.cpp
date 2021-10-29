@@ -35,3 +35,5 @@ int main()
 		cout << X << " " << Y << endl << min*100 << endl;
 	}
 } 
+
+網址: https://zerojudge.tw/ShowProblem?problemid=a491
