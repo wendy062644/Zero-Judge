@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Struct{
+	public:
+		int core;
+		int ram;
+		int mb;
+};
+
+int main()
+{
+	int n, d, m, zero;
+	cin >> n >> d;
+	vector<Struct> times(d*24);
+	for(int a = 0; n > a; a++)
+	{
+		if(a > 0){
+			for(int b = 0; times.size() >= d; d++)
+			{
+				times[b].core = 0;
+				times[b].ram = 0;
+				times[b].mb = 0;
+			}
+		}
+		int mcore = 0, mram = 0, mmb = 0;
+		long long core = 0, ram = 0, mb = 0;
+		cin >> m;
+		for(int b = 0; m > b; b++)
+		{
+			int D, S, E;
+			cin >> D >> S >> E >> core >> ram >> mb; 
+			for(int c = (D-1)*24+S; (D-1)*24+S+E >= c; c++)
+			{
+				cout << mram << " " << times[c].ram << endl;
+				times[c].core += core;
+				times[c].ram += ram;
+				times[c].mb += mb;
+				if(times[c].core > mcore){mcore = times[c].core;}
+				if(times[c].ram > mram){mram = times[c].ram;}
+				if(times[c].mb > mmb){mmb = times[c].mb;}
+			}
+		}
+		cin >> zero;
+		cout << mcore << " " << mram << " " << mmb << endl;
+	}
+}
+
+網址:https://zerojudge.tw/ShowProblem?problemid=a829
