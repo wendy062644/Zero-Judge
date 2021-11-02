@@ -10,17 +10,17 @@ class Struct{
 
 int main()
 {
-	int n, d, m, zero;
+	int n = 0, d = 0, m = 0, zero = 0;
 	cin >> n >> d;
 	vector<Struct> times(d*24);
 	for(int a = 0; n > a; a++)
 	{
 		if(a > 0){
-			for(int b = 0; times.size() >= d; d++)
+			for(int d = 0; times.size() >= d; d++)
 			{
-				times[b].core = 0;
-				times[b].ram = 0;
-				times[b].mb = 0;
+				times[d].core = 0;
+				times[d].ram = 0;
+				times[d].mb = 0;
 			}
 		}
 		int mcore = 0, mram = 0, mmb = 0;
@@ -28,22 +28,29 @@ int main()
 		cin >> m;
 		for(int b = 0; m > b; b++)
 		{
-			int D, S, E;
+			int D = 0, S = 0, E = 0;
 			cin >> D >> S >> E >> core >> ram >> mb; 
-			for(int c = (D-1)*24+S; (D-1)*24+S+E >= c; c++)
+			int st = (D-1)*24+S;
+			for(int c = 0; E > c; c++)
 			{
-				cout << mram << " " << times[c].ram << endl;
-				times[c].core += core;
-				times[c].ram += ram;
-				times[c].mb += mb;
-				if(times[c].core > mcore){mcore = times[c].core;}
-				if(times[c].ram > mram){mram = times[c].ram;}
-				if(times[c].mb > mmb){mmb = times[c].mb;}
+				if(st+c >= 24*d)
+				{
+					st -= 24*d;
+				} 
+				times[st+c].core += core;
+				times[st+c].ram += ram;
+				times[st+c].mb += mb;
 			}
 		}
-		cin >> zero;
+		
+		for(int b = 0; times.size() > b; b++)
+		{
+			mcore = max(mcore, times[b].core);
+			mram = max(mram, times[b].ram);
+			mmb = max(mmb, times[b].mb);
+		}
 		cout << mcore << " " << mram << " " << mmb << endl;
+		cin >> zero;
 	}
+	return 0;
 }
-
-網址:https://zerojudge.tw/ShowProblem?problemid=a829
