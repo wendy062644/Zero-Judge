@@ -2,8 +2,8 @@
 using namespace std;
 int main()
 {
-	int n, R, C, num;
-	long long minx, miny, point, xx, yy;
+	long long n, R, C, num;
+	long long minx, miny, xx, yy;
 	cin >> n;
 	while(n--)
 	{
