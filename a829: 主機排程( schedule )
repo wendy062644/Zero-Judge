@@ -1,32 +1,30 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class Struct{
-	public:
-		int core;
-		int ram;
-		int mb;
+struct Struct{
+	int core;
+	int ram;
+	int mb;
 };
 
 int main()
 {
-	int n = 0, d = 0, m = 0, zero = 0;
+	int n = 0, d = 0, zero, core, ram, mb, mcore, mram, mmb, m;
 	cin >> n >> d;
 	vector<Struct> times(d*24);
 	for(int a = 0; n > a; a++)
 	{
+		mcore = -1; mram = -1; mmb = -1;
+		cin >> m;
 		if(a > 0){
-			for(int d = 0; times.size() >= d; d++)
+			for(int d = 0; times.size() > d; d++)
 			{
 				times[d].core = 0;
 				times[d].ram = 0;
 				times[d].mb = 0;
 			}
 		}
-		int mcore = 0, mram = 0, mmb = 0;
-		long long core = 0, ram = 0, mb = 0;
-		cin >> m;
-		for(int b = 0; m > b; b++)
+		for(int l = 0; m > l; l++)
 		{
 			int D = 0, S = 0, E = 0;
 			cin >> D >> S >> E >> core >> ram >> mb; 
@@ -42,7 +40,6 @@ int main()
 				times[st+c].mb += mb;
 			}
 		}
-		
 		for(int b = 0; times.size() > b; b++)
 		{
 			mcore = max(mcore, times[b].core);
@@ -54,3 +51,5 @@ int main()
 	}
 	return 0;
 }
+
+//網址: https://zerojudge.tw/ShowProblem?problemid=a829  AC(59ms, 596KB)
